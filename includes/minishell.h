@@ -15,25 +15,13 @@
 
 //STRUCTS
 
-typedef struct s_token
-{
-    
-    
-}   t_token;
-
-typedef struct	s_envp
-{
-
-}	t_envp;
 
 typedef struct	s_minishell
 {
 	char	*input;
-	t_envp	*envp;
-	t_token	*tokens;
 
 }   t_minish;
-extern t_minish	t_minishell;
+extern t_minish	msh;
 
 /*Functions*/
 void        print_msg(void);

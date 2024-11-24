@@ -1,27 +1,27 @@
 # include "minishell.h"
 
-t_minish t_minishell;
+t_minish msh;
 
 static void minishell_loop(void)
 {
 
 	while (1)
 	{
-		t_minishell.input = readline("minishell> ");
-		if (!t_minishell.input)
+		msh.input = readline("minishell> ");
+		if (!msh.input)
 			return ; // ToDo-> ft_errors;
-		if (!ft_strcmp(t_minishell.input, "exit"))
+		if (!ft_strcmp(msh.input, "exit"))
 		{
 			return ;
 		}
-		if ((check_only_spaces(t_minishell.input) == -1 || t_minishell.input[0] == '\0'))
+		if ((check_only_spaces(msh.input) == -1 || msh.input[0] == '\0'))
 		{
-			free(t_minishell.input);
+			free(msh.input);
 		}
 		else
 		{
-			add_history(t_minishell.input);
-			t_minishell.tokens = tokenize();
+			add_history(msh.input);
+			if (tokenize(msh, &msh->cmd, msh.input) && msh.flags->quote != 0)
 		}	
 	}
 }
